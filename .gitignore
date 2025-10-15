@@ -1,0 +1,5 @@
+# Environment variables
+.env
+
+# MCP configuration (contains references to sensitive data)
+.mcp.json
