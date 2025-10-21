@@ -15,20 +15,23 @@
                 <textarea data-template>
 # Agentic Coding 
 The Basics
+Notes: zubi
 ---
 # <span style="background-color:#ff00c1">Claude Code</span>
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Terminal vs GUI</span>
+### Claude Code - <span style="background-color:#ff00c1">Terminal vs GUI</span>
 - Command line <!-- .element: class="fragment" -->
 - Native VSCode GUI extension <!-- .element: class="fragment" -->
 - Native JetBrains extension (beta) <!-- .element: class="fragment" -->
+Notes: domi
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Settings</span>
+### Claude Code - <span style="background-color:#ff00c1">Settings</span>
 - .claude/settings.json <!-- .element: class="fragment" -->
 - .claude/settings.local.json <!-- .element: class="fragment" -->
 - ~/.claude/settings.json <!-- .element: class="fragment" -->
+Notes: domi
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Models</span>
+### Claude Code - <span style="background-color:#ff00c1">Models</span>
 - /model <!-- .element: class="fragment" -->
 - Sonett <!-- .element: class="fragment" -->
   - To code <!-- .element: class="fragment" -->
@@ -40,41 +43,50 @@ The Basics
 - Modes: <!-- .element: class="fragment" -->
   - Tab key <!-- .element: class="fragment" -->
   - Thinking/normal <!-- .element: class="fragment" -->
+Notes: domi
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Commands</span>
+### Claude Code - <span style="background-color:#ff00c1">Commands</span>
 - Where to put them <!-- .element: class="fragment" -->
 - Parameterization <!-- .element: class="fragment" -->
 - /my-command <!-- .element: class="fragment" -->
+Notes: domi
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Subagents</span>
+### Claude Code - <span style="background-color:#ff00c1">Subagents</span>
 - /agents <!-- .element: class="fragment" -->
 - Orchestrated by main agent <!-- .element: class="fragment" -->
 - Isolated from main context <!-- .element: class="fragment" -->
 - Example: <!-- .element: class="fragment" -->
   - Gather requirements where you can use Context7 <!-- .element: class="fragment" -->
   - Commit message subagent to make commits <!-- .element: class="fragment" -->
+Notes: domi
 ---
-#### Claude Code - <span style="background-color:#ff00c1">Hooks</span>
+### Claude Code - <span style="background-color:#ff00c1">Hooks</span>
 - Enforce test, linter, etc execution with 100% pass <!-- .element: class="fragment" -->
 - Prevent editing what's locked, ie integration tests <!-- .element: class="fragment" -->
 - Trigger notification <!-- .element: class="fragment" -->
+Notes: domi
 ---
 ### Claude Code - <span style="background-color:#ff00c1">Tool usage</span>
 - Bash commands <!-- .element: class="fragment" -->
 - MCP Servers <!-- .element: class="fragment" -->
   - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp <!-- .element: class="fragment" -->
   - Manually edit .claude/.mcp.json <!-- .element: class="fragment" -->
+Notes: domi
 ---
 ### Claude Code - <span style="background-color:#ff00c1">Permission rules</span>
 - /permission <!-- .element: class="fragment" -->
 - Manually edit .claude/settings.json <!-- .element: class="fragment" -->
+Notes: domi
 ---
 # <span style="background-color:#ff00c1">Basic Prompting</span>
+Notes: zubi
 ---
-### Basic Prompting - <span style="background-color:#ff00c1">Hallucination</span>
+### Prompting - <span style="background-color:#ff00c1">Hallucinations</span>
 - ai fills holes creatively <!-- .element: class="fragment" -->
+- important parts must be covered in context (ie. rules, samples, etc) <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Prompting - <span style="background-color:#ff00c1">Action + Location + Detail</span>
+### Prompting - <span style="background-color:#ff00c1">Action + Location + Detail</span>
 - Action: <!-- .element: class="fragment" -->
   - What to do <!-- .element: class="fragment" -->
 - Location: <!-- .element: class="fragment" -->
@@ -86,33 +98,39 @@ The Basics
   - Update <!-- .element: class="fragment" -->
   - Mirror <!-- .element: class="fragment" -->
   - Search <!-- .element: class="fragment" -->
+Notes: domi
 ---
-### Basic Prompting - <span style="background-color:#ff00c1">Provide Examples</span>
+### Prompting - <span style="background-color:#ff00c1">Provide Examples</span>
 - Existing tests <!-- .element: class="fragment" -->
 - Expected transformation from → to <!-- .element: class="fragment" -->
 - Starting of a list, 1, 3, 5, 7... <!-- .element: class="fragment" -->
+Notes: domi
 ---
-### Basic Prompting - <span style="background-color:#ff00c1">Define Output Format</span>
+### Prompting - <span style="background-color:#ff00c1">Define Output Format</span>
 - Defined json/yaml/etc syntax <!-- .element: class="fragment" -->
 - enforce with validation (with hooks) <!-- .element: class="fragment" -->
+Notes: domi
 ---
-### Basic Prompting - <span style="background-color:#ff00c1">Further techniques</span>
+### Prompting - <span style="background-color:#ff00c1">Further techniques</span>
 - Define edge cases <!-- .element: class="fragment" -->
 - Ask the agent to improve your prompt <!-- .element: class="fragment" -->
 - Ask to ask back questions to clarify <!-- .element: class="fragment" -->
 - Deep research in ChatGPT <!-- .element: class="fragment" -->
 - Keywords: think, think hard, think harder, ultrathink <!-- .element: class="fragment" -->
+Notes: domi
 ---
-# <span style="background-color:#ff00c1">Basic Context Engineering</span>
+# <span style="background-color:#ff00c1">Context Engineering</span>
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Good Context</span>
+### Context Engineering - <span style="background-color:#ff00c1">Good Context</span>
 - Small <!-- .element: class="fragment" -->
 - Contains only what's in scope <!-- .element: class="fragment" -->
 - Keep track of context usage <!-- .element: class="fragment" -->
   - cli tool or gui <!-- .element: class="fragment" -->
   - /context <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Context Management</span>
+### Context Engineering - <span style="background-color:#ff00c1">Context Management</span>
 - Resuming previous <!-- .element: class="fragment" -->
   - /resume <!-- .element: class="fragment" -->
 - Compacting <!-- .element: class="fragment" -->
@@ -122,11 +140,13 @@ The Basics
 - Clearing / Starting new <!-- .element: class="fragment" -->
   - /clear or start new claude <!-- .element: class="fragment" -->
   - When to create new context <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Model focus</span>
+### Context Engineering - <span style="background-color:#ff00c1">Model focus</span>
 - Beginning and especially end of context <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Memory</span>
+### Context Engineering - <span style="background-color:#ff00c1">Memory</span>
 - CLAUDE.md <!-- .element: class="fragment" -->
     - Coding standards & rules <!-- .element: class="fragment" -->
     - Core files and utility functions <!-- .element: class="fragment" -->
@@ -135,27 +155,27 @@ The Basics
     - Repository etiquette (e.g., branch naming, merge vs. rebase, etc.) <!-- .element: class="fragment" -->
     - API References and dependency documentation links <!-- .element: class="fragment" -->
     - Add CLAUDE.md to important subfolders also <!-- .element: class="fragment" -->
-
-Notes:
-    - Any unexpected behaviors or warnings particular to the project
-    - Developer environment setup (e.g., pyenv use, which compilers work)
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Files and extra folders</span>
+### Context Engineering - <span style="background-color:#ff00c1">Files and extra folders</span>
 - @filename.[xyz] <!-- .element: class="fragment" -->
 - /add-dir <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">Don't change by hand if possible</span>
-- Let it fix the issue <!-- .element: class="fragment" -->
-- Let it execute the bash script it wrote <!-- .element: class="fragment" -->
-- If you really need to, tell about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
+### Context Engineering - <span style="background-color:#ff00c1">Do NOT touch it</span>
+- Let AI fix the issue <!-- .element: class="fragment" -->
+- Let AI execute the bash script it wrote <!-- .element: class="fragment" -->
+- If you really need to touch it, notify the model about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
+Notes: zubi
 ---
-### Basic Context Engineering - <span style="background-color:#ff00c1">RAG - Retrieve Augment Generate</span>
-- using tools <!-- .element: class="fragment" -->
-    - File based <!-- .element: class="fragment" -->
-    - MCP servers - later <!-- .element: class="fragment" -->
-    - Vector database based <!-- .element: class="fragment" -->
+### Context Engineering - <span style="background-color:#ff00c1"><span style="text-decoration: underline;">R</span>etrieve <span style="text-decoration: underline;">A</span>ugment <span style="text-decoration: underline;">G</span>enerate</span>
+  - File based <!-- .element: class="fragment" -->
+  - MCP servers - later <!-- .element: class="fragment" -->
+  - Vector database based <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 # <span style="background-color:#ff00c1">Workflow</span>
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Plan</span>
 - Iterative planning in markdown <!-- .element: class="fragment" -->
@@ -168,6 +188,7 @@ Notes:
     - Context <!-- .element: class="fragment" -->
     - Dependency references <!-- .element: class="fragment" -->
 - Human review <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Task list</span>
 - Involve AI in task breakdown in markdown <!-- .element: class="fragment" -->
@@ -176,11 +197,13 @@ Notes:
   - Reasonable, demoable size for each task <!-- .element: class="fragment" -->
   - Execution order <!-- .element: class="fragment" -->
   - Human review <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Execute</span>
 - One task at a time <!-- .element: class="fragment" -->
 - Separate context when possible <!-- .element: class="fragment" -->
 - Optional improvement: Write tests first (TDD) OR write tests and code together <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Validation</span>
 - Best if it can be done by the model itself <!-- .element: class="fragment" -->
@@ -192,6 +215,7 @@ Notes:
   - Quick human evaluation <!-- .element: class="fragment" -->
 - Hooks - later <!-- .element: class="fragment" -->
 - AI double checks the implementation <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Code Review</span>
 - Automatic review <!-- .element: class="fragment" -->
@@ -200,10 +224,12 @@ Notes:
 - Human review <!-- .element: class="fragment" -->
   - __Never trust AI generated code especially in production__ <!-- .element: class="fragment" -->
   - __Read and understand every line it produces__ <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Commit/rewind</span>
 - If good, commit after each task <!-- .element: class="fragment" -->
 - If not, ask to modify or /rewind to previous checkpoint <!-- .element: class="fragment" -->
+Notes: zubi
 ---
 ### Workflow - <span style="background-color:#ff00c1">Spec Driven Development Frameworks</span> 
 - Requirement Gathering Workflow
@@ -211,6 +237,15 @@ Notes:
     - Beta
 - [Github Spec Kit](https://github.com/github/spec-kit)
 - [Agent OS](https://github.com/buildermethods/agent-os)
+Notes: zubi
+---
+### <span style="background-color:#ff00c1">What's Next</span> 
+- Micro learning tasks
+- More advanced sessions
+Notes: zubi
+---
+### <span style="background-color:#ff00c1">Qestions?</span> 
+Notes: zubi
                 </textarea>
             </section>
         </div>
