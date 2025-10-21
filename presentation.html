@@ -20,8 +20,13 @@
 - Native VSCode GUI extension <!-- .element: class="fragment" -->
 - Native JetBrains extension (beta) <!-- .element: class="fragment" -->
 ---
-## CC basics - Model - Models
-- model <!-- .element: class="fragment" -->
+## CC basics - Settings
+- .claude/settings.json <!-- .element: class="fragment" -->
+- .claude/settings.local.json <!-- .element: class="fragment" -->
+- ~/.claude/settings.json <!-- .element: class="fragment" -->
+---
+## CC basics - Models
+- /model <!-- .element: class="fragment" -->
 - Sonett <!-- .element: class="fragment" -->
   - To code <!-- .element: class="fragment" -->
   - 200k vs 1m tokens <!-- .element: class="fragment" -->
@@ -59,9 +64,12 @@
 ---
 ## CC basics - Permission rules
 - /permission <!-- .element: class="fragment" -->
-- Manually edit .claude/settings.json or ~/.claude.json <!-- .element: class="fragment" -->
+- Manually edit .claude/settings.json <!-- .element: class="fragment" -->
 ---
 ## Basic Prompting
+---
+## Hallucination
+- ai fills holes creatively <!-- .element: class="fragment" -->
 ---
 ## Action + Location + Detail
 - Action: <!-- .element: class="fragment" -->
@@ -111,7 +119,6 @@
 - Clearing / Starting new <!-- .element: class="fragment" -->
   - /clear or start new claude <!-- .element: class="fragment" -->
   - When to create new context <!-- .element: class="fragment" -->
-  - What to add to the new context from the previous one <!-- .element: class="fragment" -->
 ---
 ## Model focus
 - Beginning and especially end of context <!-- .element: class="fragment" -->
@@ -123,19 +130,15 @@
     - Building & Testing instructions <!-- .element: class="fragment" -->
     - Common bash commands <!-- .element: class="fragment" -->
     - Repository etiquette (e.g., branch naming, merge vs. rebase, etc.) <!-- .element: class="fragment" -->
-    - Other information you want Claude to remember <!-- .element: class="fragment" -->
+    - API References and dependency documentation links
     - Add CLAUDE.md to important subfolders also <!-- .element: class="fragment" -->
 
 Notes:
     - Any unexpected behaviors or warnings particular to the project
     - Developer environment setup (e.g., pyenv use, which compilers work)
-    - API References and dependency documentation links
 ---
-## Referencing files
-- @filename.md <!-- .element: class="fragment" -->
-- Needed on bigger projects with lot of files <!-- .element: class="fragment" -->
----
-## Adding folders to scope
+## Files and extra folders
+- @filename.[xyz] <!-- .element: class="fragment" -->
 - /add-dir <!-- .element: class="fragment" -->
 ---
 ## Don't change by hand if possible
@@ -144,25 +147,28 @@ Notes:
 - If you really need to, tell about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
 ---
 ## RAG - Retrieve Augment Generate
-- File based <!-- .element: class="fragment" -->
-- Vector database based <!-- .element: class="fragment" -->
-- MCP servers - later <!-- .element: class="fragment" -->
+- using tools <!-- .element: class="fragment" -->
+    - File based <!-- .element: class="fragment" -->
+    - MCP servers - later <!-- .element: class="fragment" -->
+    - Vector database based <!-- .element: class="fragment" -->
 ---
-## Workflow TBD
+## Workflow
 ---
 ## Plan
 - Iterative planning in markdown <!-- .element: class="fragment" -->
-- Involve AI in plan generation <!-- .element: class="fragment" -->
+    - Involve AI in plan generation <!-- .element: class="fragment" -->
+    - Request to clarify questions (multiple iterations) <!-- .element: class="fragment" -->
 - Define <!-- .element: class="fragment" -->
-  - High-Level Objective <!-- .element: class="fragment" -->
-  - Mid-Level Breakdown <!-- .element: class="fragment" -->
-  - Implementation Notes <!-- .element: class="fragment" -->
-  - Context (Input (starting point) + Output) <!-- .element: class="fragment" -->
-- Request to clarify questions (multiple iterations) <!-- .element: class="fragment" -->
+    - Goal of the task(s) <!-- .element: class="fragment" -->
+    - Functional requirements <!-- .element: class="fragment" -->
+    - Technical requirements <!-- .element: class="fragment" -->
+    - Context <!-- .element: class="fragment" -->
+    - Dependency references <!-- .element: class="fragment" -->
 - Human review <!-- .element: class="fragment" -->
 ---
-## Low-level tasks
-- The step-by-step implementation plan — ordered, explicit tasks that the reasoning model can execute. <!-- .element: class="fragment" -->
+## Task list
+- Involve AI in task breakdown in markdown <!-- .element: class="fragment" -->
+- The step-by-step implementation plan — ordered, explicit tasks <!-- .element: class="fragment" -->
   - Built in vs markdown based <!-- .element: class="fragment" -->
   - Reasonable, demoable size for each task <!-- .element: class="fragment" -->
   - Execution order <!-- .element: class="fragment" -->
@@ -174,22 +180,19 @@ Notes:
 - Optional improvement: Write tests first (TDD) OR write tests and code together <!-- .element: class="fragment" -->
 ---
 ## Validation
-- Best if it can be done by the model itself (ie test running, script execution, etc) <!-- .element: class="fragment" -->
+- Best if it can be done by the model itself <!-- .element: class="fragment" -->
 - Reflection <!-- .element: class="fragment" -->
   - test runs, linters, type check, build result <!-- .element: class="fragment" -->
   - Static analysis reports, screenshots, error logs, diffs <!-- .element: class="fragment" -->
-  - HTTP response codes, load times, HAR file diffs <!-- .element: class="fragment" -->
-  - Dataset shape or schema mismatches, CSV/JSON parse errors <!-- .element: class="fragment" -->
 - Ask for a Demo (even partial results) <!-- .element: class="fragment" -->
   - Self-evaluated demos are the best <!-- .element: class="fragment" -->
   - Quick human evaluation <!-- .element: class="fragment" -->
 - Hooks - later <!-- .element: class="fragment" -->
-- Larger tasks: <!-- .element: class="fragment" -->
-  - Ask to Double check if the implementation meets the requirements <!-- .element: class="fragment" -->
+- AI double checks the implementation <!-- .element: class="fragment" -->
 ---
 ## Code Review
 - Automatic review <!-- .element: class="fragment" -->
-  - PromptCollection /code-review command <!-- .element: class="fragment" -->
+  - /prompt-collection:code-review   <!-- .element: class="fragment" -->
   - /review - only for Github <!-- .element: class="fragment" -->
 - Human review <!-- .element: class="fragment" -->
   - Never trust AI generated code especially in production <!-- .element: class="fragment" -->
@@ -197,6 +200,11 @@ Notes:
 ## Commit/rewind
 - If good, commit after each task <!-- .element: class="fragment" -->
 - If not, ask to modify or /rewind to previous checkpoint <!-- .element: class="fragment" -->
+---
+Tools about SDD
+- RGW - Nandi's tool
+- Github Spec Kit
+- Agent OS
                 </textarea>
             </section>
         </div>
