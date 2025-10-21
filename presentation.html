@@ -6,516 +6,199 @@
     <title>Claude Code Workshop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/moon.css">
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
-
-            <!-- Title Slide -->
             <section data-markdown>
                 <textarea data-template>
-                    # 1. Workshop
+# 1. Workshop
+---
+## CC basics - Terminal vs GUI
+- Command line <!-- .element: class="fragment" -->
+- Native VSCode GUI extension <!-- .element: class="fragment" -->
+- Native JetBrains extension (beta) <!-- .element: class="fragment" -->
+---
+## CC basics - Model - Models
+- model <!-- .element: class="fragment" -->
+- Sonett <!-- .element: class="fragment" -->
+  - To code <!-- .element: class="fragment" -->
+  - 200k vs 1m tokens <!-- .element: class="fragment" -->
+- Opus <!-- .element: class="fragment" -->
+  - To plan - default in plan mode <!-- .element: class="fragment" -->
+  - More expensive and slower <!-- .element: class="fragment" -->
+- Haiku <!-- .element: class="fragment" -->
+- Modes: <!-- .element: class="fragment" -->
+  - Tab key <!-- .element: class="fragment" -->
+  - Thinking/normal <!-- .element: class="fragment" -->
+---
+## CC basics - Commands
+- Where to put them <!-- .element: class="fragment" -->
+- Parameterization <!-- .element: class="fragment" -->
+- /my-command <!-- .element: class="fragment" -->
+---
+## CC basics - Subagents
+- /agents <!-- .element: class="fragment" -->
+- Orchestrated by main agent <!-- .element: class="fragment" -->
+- Isolated from main context <!-- .element: class="fragment" -->
+- Example: <!-- .element: class="fragment" -->
+  - Gather requirements where you can use Context7 <!-- .element: class="fragment" -->
+  - Commit message subagent to make commits <!-- .element: class="fragment" -->
+---
+## CC basics - Hooks
+- Enforce test, linter, etc execution with 100% pass <!-- .element: class="fragment" -->
+- Prevent editing what's locked, ie integration tests <!-- .element: class="fragment" -->
+- Trigger notification <!-- .element: class="fragment" -->
+---
+## CC basics - Tool usage
+- Bash commands <!-- .element: class="fragment" -->
+- MCP Servers <!-- .element: class="fragment" -->
+  - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp <!-- .element: class="fragment" -->
+  - Manually edit .claude/.mcp.json <!-- .element: class="fragment" -->
+---
+## CC basics - Permission rules
+- /permission <!-- .element: class="fragment" -->
+- Manually edit .claude/settings.json or ~/.claude.json <!-- .element: class="fragment" -->
+---
+## Basic Prompting
+---
+## Action + Location + Detail
+- Action: <!-- .element: class="fragment" -->
+  - What to do <!-- .element: class="fragment" -->
+- Location: <!-- .element: class="fragment" -->
+  - Where to do it <!-- .element: class="fragment" -->
+- Detail: <!-- .element: class="fragment" -->
+  - How to do it <!-- .element: class="fragment" -->
+- Information Dense Keywords <!-- .element: class="fragment" -->
+  - Create <!-- .element: class="fragment" -->
+  - Update <!-- .element: class="fragment" -->
+  - Mirror <!-- .element: class="fragment" -->
+  - Search <!-- .element: class="fragment" -->
+---
+## Provide Examples
+- Existing tests <!-- .element: class="fragment" -->
+- Expected transformation from → to <!-- .element: class="fragment" -->
+- Starting of a list, 1, 3, 5, 7... <!-- .element: class="fragment" -->
+---
+## Define Output Format
+- Defined json/yaml/etc syntax <!-- .element: class="fragment" -->
+- enforce with validation (with hooks) <!-- .element: class="fragment" -->
+---
+## Further techniques
+- Define edge cases <!-- .element: class="fragment" -->
+- Ask the agent to improve your prompt <!-- .element: class="fragment" -->
+- Ask to ask back questions to clarify <!-- .element: class="fragment" -->
+- Deep research in ChatGPT <!-- .element: class="fragment" -->
+- Keywords: think, think hard, think harder, ultrathink <!-- .element: class="fragment" -->
+---
+## Basic Context Engineering
+---
+## Good Context
+- Small <!-- .element: class="fragment" -->
+- Contains only what's in scope <!-- .element: class="fragment" -->
+- Keep track of context usage <!-- .element: class="fragment" -->
+  - cli tool or gui <!-- .element: class="fragment" -->
+  - /context <!-- .element: class="fragment" -->
+---
+## Context Management
+- Resuming previous <!-- .element: class="fragment" -->
+  - /resume <!-- .element: class="fragment" -->
+- Compacting <!-- .element: class="fragment" -->
+  - /compact <!-- .element: class="fragment" -->
+  - What it does <!-- .element: class="fragment" -->
+  - Avoid it <!-- .element: class="fragment" -->
+- Clearing / Starting new <!-- .element: class="fragment" -->
+  - /clear or start new claude <!-- .element: class="fragment" -->
+  - When to create new context <!-- .element: class="fragment" -->
+  - What to add to the new context from the previous one <!-- .element: class="fragment" -->
+---
+## Model focus
+- Beginning and especially end of context <!-- .element: class="fragment" -->
+---
+## Memory
+- CLAUDE.md <!-- .element: class="fragment" -->
+    - Coding standards & rules <!-- .element: class="fragment" -->
+    - Core files and utility functions <!-- .element: class="fragment" -->
+    - Building & Testing instructions <!-- .element: class="fragment" -->
+    - Common bash commands <!-- .element: class="fragment" -->
+    - Repository etiquette (e.g., branch naming, merge vs. rebase, etc.) <!-- .element: class="fragment" -->
+    - Other information you want Claude to remember <!-- .element: class="fragment" -->
+    - Add CLAUDE.md to important subfolders also <!-- .element: class="fragment" -->
+
+Notes:
+    - Any unexpected behaviors or warnings particular to the project
+    - Developer environment setup (e.g., pyenv use, which compilers work)
+    - API References and dependency documentation links
+---
+## Referencing files
+- @filename.md <!-- .element: class="fragment" -->
+- Needed on bigger projects with lot of files <!-- .element: class="fragment" -->
+---
+## Adding folders to scope
+- /add-dir <!-- .element: class="fragment" -->
+---
+## Don't change by hand if possible
+- Let it fix the issue <!-- .element: class="fragment" -->
+- Let it execute the bash script it wrote <!-- .element: class="fragment" -->
+- If you really need to, tell about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
+---
+## RAG - Retrieve Augment Generate
+- File based <!-- .element: class="fragment" -->
+- Vector database based <!-- .element: class="fragment" -->
+- MCP servers - later <!-- .element: class="fragment" -->
+---
+## Workflow TBD
+---
+## Plan
+- Iterative planning in markdown <!-- .element: class="fragment" -->
+- Involve AI in plan generation <!-- .element: class="fragment" -->
+- Define <!-- .element: class="fragment" -->
+  - High-Level Objective <!-- .element: class="fragment" -->
+  - Mid-Level Breakdown <!-- .element: class="fragment" -->
+  - Implementation Notes <!-- .element: class="fragment" -->
+  - Context (Input (starting point) + Output) <!-- .element: class="fragment" -->
+- Request to clarify questions (multiple iterations) <!-- .element: class="fragment" -->
+- Human review <!-- .element: class="fragment" -->
+---
+## Low-level tasks
+- The step-by-step implementation plan — ordered, explicit tasks that the reasoning model can execute. <!-- .element: class="fragment" -->
+  - Built in vs markdown based <!-- .element: class="fragment" -->
+  - Reasonable, demoable size for each task <!-- .element: class="fragment" -->
+  - Execution order <!-- .element: class="fragment" -->
+  - Human review <!-- .element: class="fragment" -->
+---
+## Execute
+- One task at a time <!-- .element: class="fragment" -->
+- Separate context when possible <!-- .element: class="fragment" -->
+- Optional improvement: Write tests first (TDD) OR write tests and code together <!-- .element: class="fragment" -->
+---
+## Validation
+- Best if it can be done by the model itself (ie test running, script execution, etc) <!-- .element: class="fragment" -->
+- Reflection <!-- .element: class="fragment" -->
+  - test runs, linters, type check, build result <!-- .element: class="fragment" -->
+  - Static analysis reports, screenshots, error logs, diffs <!-- .element: class="fragment" -->
+  - HTTP response codes, load times, HAR file diffs <!-- .element: class="fragment" -->
+  - Dataset shape or schema mismatches, CSV/JSON parse errors <!-- .element: class="fragment" -->
+- Ask for a Demo (even partial results) <!-- .element: class="fragment" -->
+  - Self-evaluated demos are the best <!-- .element: class="fragment" -->
+  - Quick human evaluation <!-- .element: class="fragment" -->
+- Hooks - later <!-- .element: class="fragment" -->
+- Larger tasks: <!-- .element: class="fragment" -->
+  - Ask to Double check if the implementation meets the requirements <!-- .element: class="fragment" -->
+---
+## Code Review
+- Automatic review <!-- .element: class="fragment" -->
+  - PromptCollection /code-review command <!-- .element: class="fragment" -->
+  - /review - only for Github <!-- .element: class="fragment" -->
+- Human review <!-- .element: class="fragment" -->
+  - Never trust AI generated code especially in production <!-- .element: class="fragment" -->
+---
+## Commit/rewind
+- If good, commit after each task <!-- .element: class="fragment" -->
+- If not, ask to modify or /rewind to previous checkpoint <!-- .element: class="fragment" -->
                 </textarea>
             </section>
-
-            <!-- CC bascs -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Terminal vs GUI
-                        - Command line <!-- .element: class="fragment" -->
-                        - Native VSCode GUI extension <!-- .element: class="fragment" -->
-                        - Native JetBrains extension (beta) <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Model - Models
-                        - model <!-- .element: class="fragment" -->
-                        - Sonett 4.5 <!-- .element: class="fragment" -->
-                          - To code <!-- .element: class="fragment" -->
-                          - 200k vs 1m tokens <!-- .element: class="fragment" -->
-                        - Opus <!-- .element: class="fragment" -->
-                          - Thinking model <!-- .element: class="fragment" -->
-                          - To plan - default in plan mode <!-- .element: class="fragment" -->
-                          - More expensive and slower <!-- .element: class="fragment" -->
-                        - Modes: <!-- .element: class="fragment" -->
-                          - Tab key <!-- .element: class="fragment" -->
-                          - Thinking/normal <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Commands
-                        - Where to put them <!-- .element: class="fragment" -->
-                        - Parameterization <!-- .element: class="fragment" -->
-                        - /my-command <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Subagents
-                        - /agents <!-- .element: class="fragment" -->
-                        - Orchestrated by main agent <!-- .element: class="fragment" -->
-                        - Isolated from main context <!-- .element: class="fragment" -->
-                        - Example: <!-- .element: class="fragment" -->
-                          - Gather requirements where you can use Context7 <!-- .element: class="fragment" -->
-                          - Commit message subagent to make commits <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Hooks
-                        - Enforce test, linter, etc execution with 100% pass <!-- .element: class="fragment" -->
-                        - Prevent editing what's locked, ie integration tests <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Tool usage
-                        - Bash commands <!-- .element: class="fragment" -->
-                        - MCP Servers <!-- .element: class="fragment" -->
-                          - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp <!-- .element: class="fragment" -->
-                          - Manually edit .claude/.mcp.json <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## CC bascs - Permission rules
-                        - /permission <!-- .element: class="fragment" -->
-                        - Manually edit .claude/settings.json or ~/.claude.json <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Basic Prompting -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Basic Prompting
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Action + Location + Detail
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Information Dense Keywords
-                        - Keywords: <!-- .element: class="fragment" -->
-                          - Create <!-- .element: class="fragment" -->
-                          - Update <!-- .element: class="fragment" -->
-                          - Mirror <!-- .element: class="fragment" -->
-                          - Search <!-- .element: class="fragment" -->
-                        - Video link <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Mid-level prompt (not too high, not too low)
-                        - Video link <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Provide Examples
-                        - Existing tests <!-- .element: class="fragment" -->
-                        - Expected transformation from → to <!-- .element: class="fragment" -->
-                        - Starting of a list, 1, 3, 5, 7... <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Define Output Format
-                        - Defined json/yaml/etc syntax <!-- .element: class="fragment" -->
-                        - Not always follow it - enforce with validation → later <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Further techniques
-                        - Define edge cases <!-- .element: class="fragment" -->
-                        - Ask the agent to improve your prompt <!-- .element: class="fragment" -->
-                        - Ask to ask back questions to clarify <!-- .element: class="fragment" -->
-                        - Deep research in ChatGPT <!-- .element: class="fragment" -->
-                        - Keywords: think, think hard, think harder, ultrathink <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Basic Context Engineering -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Basic Context Engineering
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Good Context
-                        - Small <!-- .element: class="fragment" -->
-                        - Contains only what's in scope <!-- .element: class="fragment" -->
-                        - Keep track of context usage <!-- .element: class="fragment" -->
-                          - cli tool or gui <!-- .element: class="fragment" -->
-                          - /context <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Context Management
-                        - Resuming previous <!-- .element: class="fragment" -->
-                          - /resume <!-- .element: class="fragment" -->
-                        - Compacting <!-- .element: class="fragment" -->
-                          - /compact <!-- .element: class="fragment" -->
-                          - What it does <!-- .element: class="fragment" -->
-                          - Avoid it <!-- .element: class="fragment" -->
-                        - Clearing / Starting new <!-- .element: class="fragment" -->
-                          - /clear or start new claude <!-- .element: class="fragment" -->
-                          - When to create new context <!-- .element: class="fragment" -->
-                          - What to add to the new context from the previous one <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Model focus
-                        - Beginning and especially end of context <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Memory
-                        - [CLAUDE.md](https://www.anthropic.com/engineering/claude-code-best-practices) <!-- .element: class="fragment" -->
-                        - Common bash commands <!-- .element: class="fragment" -->
-                        - Core files and utility functions <!-- .element: class="fragment" -->
-                        - Coding standards & rules <!-- .element: class="fragment" -->
-                        - Building & Testing instructions <!-- .element: class="fragment" -->
-                        - Repository etiquette (e.g., branch naming, merge vs. rebase, etc.) <!-- .element: class="fragment" -->
-                        - Developer environment setup (e.g., pyenv use, which compilers work) <!-- .element: class="fragment" -->
-                        - Any unexpected behaviors or warnings particular to the project <!-- .element: class="fragment" -->
-                        - Other information you want Claude to remember <!-- .element: class="fragment" -->
-                        - API References and dependency documentation links <!-- .element: class="fragment" -->
-                        - Add CLAUDE.md to important subfolders also <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Referencing files
-                        - @filename.md <!-- .element: class="fragment" -->
-                        - Needed on bigger projects with lot of files <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Adding folders to scope
-                        - /add-dir <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Don't change by hand if possible
-                        - Let it fix the issue <!-- .element: class="fragment" -->
-                        - Let it execute the bash script it wrote <!-- .element: class="fragment" -->
-                        - If you really need to, tell about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## RAG - Retrieve Augment Generate
-                        - File based <!-- .element: class="fragment" -->
-                        - MCP servers - later <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Workflow -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Workflow
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Plan
-                        - Iterative planning in markdown <!-- .element: class="fragment" -->
-                        - Involve AI in plan generation <!-- .element: class="fragment" -->
-                        - Define <!-- .element: class="fragment" -->
-                          - High-Level Objective <!-- .element: class="fragment" -->
-                          - Mid-Level Breakdown <!-- .element: class="fragment" -->
-                          - Implementation Notes <!-- .element: class="fragment" -->
-                          - Context (Input (starting point) + Output) <!-- .element: class="fragment" -->
-                        - Request to clarify questions (multiple iterations) <!-- .element: class="fragment" -->
-                        - Human review <!-- .element: class="fragment" -->
-
-                        Note: Describe what the feature or system does — the outcome or purpose. Break the high-level goal into concrete, deliverable components — the building blocks. These define technical details, rules, and constraints for how the work should be done. Define the boundaries of the codebase visible to the AI — what it can read and should modify.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Low-level tasks
-                        - The step-by-step implementation plan — ordered, explicit tasks that the reasoning model can execute. <!-- .element: class="fragment" -->
-                          - Built in vs markdown based <!-- .element: class="fragment" -->
-                          - Reasonable, demoable size for each task <!-- .element: class="fragment" -->
-                          - Execution order <!-- .element: class="fragment" -->
-                          - Human review <!-- .element: class="fragment" -->
-
-                        Note: Built in for small task, few steps. Markdown for bigger tasks.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Execute
-                        - One task at a time <!-- .element: class="fragment" -->
-                        - Separate context when possible <!-- .element: class="fragment" -->
-                        - Optional improvement: Write tests first (TDD) OR write tests and code together <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Validation
-                        - Best if it can be done by the model itself (ie test running, script execution, etc) <!-- .element: class="fragment" -->
-                        - Reflection <!-- .element: class="fragment" -->
-                          - test runs, linters, type check, build result <!-- .element: class="fragment" -->
-                          - Static analysis reports, screenshots, error logs, diffs <!-- .element: class="fragment" -->
-                          - HTTP response codes, load times, HAR file diffs <!-- .element: class="fragment" -->
-                          - Dataset shape or schema mismatches, CSV/JSON parse errors <!-- .element: class="fragment" -->
-                        - Ask for a Demo (even partial results) <!-- .element: class="fragment" -->
-                          - Self-evaluated demos are the best <!-- .element: class="fragment" -->
-                          - Quick human evaluation <!-- .element: class="fragment" -->
-                        - Hooks - later <!-- .element: class="fragment" -->
-                        - Larger tasks: <!-- .element: class="fragment" -->
-                          - Ask to Double check if the implementation meets the requirements <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Code Review
-                        - Automatic review <!-- .element: class="fragment" -->
-                          - PromptCollection /code-review command <!-- .element: class="fragment" -->
-                          - /review - only for Github <!-- .element: class="fragment" -->
-                        - Human review <!-- .element: class="fragment" -->
-                          - Never trust AI generated code especially in production <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Commit/rewind
-                        - If good, commit after each task <!-- .element: class="fragment" -->
-                        - If not, ask to modify or /rewind to previous checkpoint <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Overcoming hallucinations -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Overcoming hallucinations
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Restart when went nuts
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Use cases -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Use cases
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Advanced techniques -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Advanced techniques
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Debugging techniques
-                        - Explain before fix: explain before implement <!-- .element: class="fragment" -->
-                        - Diff-based debugging <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Parallel working
-                        - Git worktree <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Methodology -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Methodology
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Enforce attention
-                        - Randomly guys showing their examples <!-- .element: class="fragment" -->
-                        - Random guys show bigger task results <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Micro learning
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Homeworks
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
-            <!-- Ways of educating -->
-            <section>
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Ways of educating
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Find materials
-                        - Existing IndyDevDan videos <!-- .element: class="fragment" -->
-                        - Udemy <!-- .element: class="fragment" -->
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Frontal education
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Workshops
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Delegate to guild members
-
-                        Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </textarea>
-                </section>
-            </section>
-
         </div>
     </div>
 
