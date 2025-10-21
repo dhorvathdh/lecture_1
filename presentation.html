@@ -13,19 +13,19 @@
         <div class="slides">
             <section data-markdown>
                 <textarea data-template>
-# 1. Workshop
+# CC basics
 ---
-## CC basics - Terminal vs GUI
+#### CC basics - Terminal vs GUI
 - Command line <!-- .element: class="fragment" -->
 - Native VSCode GUI extension <!-- .element: class="fragment" -->
 - Native JetBrains extension (beta) <!-- .element: class="fragment" -->
 ---
-## CC basics - Settings
+#### CC basics - Settings
 - .claude/settings.json <!-- .element: class="fragment" -->
 - .claude/settings.local.json <!-- .element: class="fragment" -->
 - ~/.claude/settings.json <!-- .element: class="fragment" -->
 ---
-## CC basics - Models
+#### CC basics - Models
 - /model <!-- .element: class="fragment" -->
 - Sonett <!-- .element: class="fragment" -->
   - To code <!-- .element: class="fragment" -->
@@ -38,12 +38,12 @@
   - Tab key <!-- .element: class="fragment" -->
   - Thinking/normal <!-- .element: class="fragment" -->
 ---
-## CC basics - Commands
+#### CC basics - Commands
 - Where to put them <!-- .element: class="fragment" -->
 - Parameterization <!-- .element: class="fragment" -->
 - /my-command <!-- .element: class="fragment" -->
 ---
-## CC basics - Subagents
+#### CC basics - Subagents
 - /agents <!-- .element: class="fragment" -->
 - Orchestrated by main agent <!-- .element: class="fragment" -->
 - Isolated from main context <!-- .element: class="fragment" -->
@@ -51,27 +51,27 @@
   - Gather requirements where you can use Context7 <!-- .element: class="fragment" -->
   - Commit message subagent to make commits <!-- .element: class="fragment" -->
 ---
-## CC basics - Hooks
+#### CC basics - Hooks
 - Enforce test, linter, etc execution with 100% pass <!-- .element: class="fragment" -->
 - Prevent editing what's locked, ie integration tests <!-- .element: class="fragment" -->
 - Trigger notification <!-- .element: class="fragment" -->
 ---
-## CC basics - Tool usage
+### CC basics - Tool usage
 - Bash commands <!-- .element: class="fragment" -->
 - MCP Servers <!-- .element: class="fragment" -->
   - claude mcp add --transport http sentry https://mcp.sentry.dev/mcp <!-- .element: class="fragment" -->
   - Manually edit .claude/.mcp.json <!-- .element: class="fragment" -->
 ---
-## CC basics - Permission rules
+### CC basics - Permission rules
 - /permission <!-- .element: class="fragment" -->
 - Manually edit .claude/settings.json <!-- .element: class="fragment" -->
 ---
-## Basic Prompting
+# Basic Prompting
 ---
-## Hallucination
+### Basic Prompting - Hallucination
 - ai fills holes creatively <!-- .element: class="fragment" -->
 ---
-## Action + Location + Detail
+### Basic Prompting - Action + Location + Detail
 - Action: <!-- .element: class="fragment" -->
   - What to do <!-- .element: class="fragment" -->
 - Location: <!-- .element: class="fragment" -->
@@ -84,32 +84,32 @@
   - Mirror <!-- .element: class="fragment" -->
   - Search <!-- .element: class="fragment" -->
 ---
-## Provide Examples
+### Basic Prompting - Provide Examples
 - Existing tests <!-- .element: class="fragment" -->
 - Expected transformation from → to <!-- .element: class="fragment" -->
 - Starting of a list, 1, 3, 5, 7... <!-- .element: class="fragment" -->
 ---
-## Define Output Format
+### Basic Prompting - Define Output Format
 - Defined json/yaml/etc syntax <!-- .element: class="fragment" -->
 - enforce with validation (with hooks) <!-- .element: class="fragment" -->
 ---
-## Further techniques
+### Basic Prompting - Further techniques
 - Define edge cases <!-- .element: class="fragment" -->
 - Ask the agent to improve your prompt <!-- .element: class="fragment" -->
 - Ask to ask back questions to clarify <!-- .element: class="fragment" -->
 - Deep research in ChatGPT <!-- .element: class="fragment" -->
 - Keywords: think, think hard, think harder, ultrathink <!-- .element: class="fragment" -->
 ---
-## Basic Context Engineering
+# Basic Context Engineering
 ---
-## Good Context
+### Basic Context Engineering - Good Context
 - Small <!-- .element: class="fragment" -->
 - Contains only what's in scope <!-- .element: class="fragment" -->
 - Keep track of context usage <!-- .element: class="fragment" -->
   - cli tool or gui <!-- .element: class="fragment" -->
   - /context <!-- .element: class="fragment" -->
 ---
-## Context Management
+### Basic Context Engineering - Context Management
 - Resuming previous <!-- .element: class="fragment" -->
   - /resume <!-- .element: class="fragment" -->
 - Compacting <!-- .element: class="fragment" -->
@@ -120,41 +120,41 @@
   - /clear or start new claude <!-- .element: class="fragment" -->
   - When to create new context <!-- .element: class="fragment" -->
 ---
-## Model focus
+### Basic Context Engineering - Model focus
 - Beginning and especially end of context <!-- .element: class="fragment" -->
 ---
-## Memory
+### Basic Context Engineering - Memory
 - CLAUDE.md <!-- .element: class="fragment" -->
     - Coding standards & rules <!-- .element: class="fragment" -->
     - Core files and utility functions <!-- .element: class="fragment" -->
     - Building & Testing instructions <!-- .element: class="fragment" -->
     - Common bash commands <!-- .element: class="fragment" -->
     - Repository etiquette (e.g., branch naming, merge vs. rebase, etc.) <!-- .element: class="fragment" -->
-    - API References and dependency documentation links
+    - API References and dependency documentation links <!-- .element: class="fragment" -->
     - Add CLAUDE.md to important subfolders also <!-- .element: class="fragment" -->
 
 Notes:
     - Any unexpected behaviors or warnings particular to the project
     - Developer environment setup (e.g., pyenv use, which compilers work)
 ---
-## Files and extra folders
+### Basic Context Engineering - Files and extra folders
 - @filename.[xyz] <!-- .element: class="fragment" -->
 - /add-dir <!-- .element: class="fragment" -->
 ---
-## Don't change by hand if possible
+### Basic Context Engineering - Don't change by hand if possible
 - Let it fix the issue <!-- .element: class="fragment" -->
 - Let it execute the bash script it wrote <!-- .element: class="fragment" -->
 - If you really need to, tell about the changes (ie link files) and reasons <!-- .element: class="fragment" -->
 ---
-## RAG - Retrieve Augment Generate
+### Basic Context Engineering - RAG - Retrieve Augment Generate
 - using tools <!-- .element: class="fragment" -->
     - File based <!-- .element: class="fragment" -->
     - MCP servers - later <!-- .element: class="fragment" -->
     - Vector database based <!-- .element: class="fragment" -->
 ---
-## Workflow
+# Workflow
 ---
-## Plan
+### Workflow - Plan
 - Iterative planning in markdown <!-- .element: class="fragment" -->
     - Involve AI in plan generation <!-- .element: class="fragment" -->
     - Request to clarify questions (multiple iterations) <!-- .element: class="fragment" -->
@@ -166,7 +166,7 @@ Notes:
     - Dependency references <!-- .element: class="fragment" -->
 - Human review <!-- .element: class="fragment" -->
 ---
-## Task list
+### Workflow - Task list
 - Involve AI in task breakdown in markdown <!-- .element: class="fragment" -->
 - The step-by-step implementation plan — ordered, explicit tasks <!-- .element: class="fragment" -->
   - Built in vs markdown based <!-- .element: class="fragment" -->
@@ -174,12 +174,12 @@ Notes:
   - Execution order <!-- .element: class="fragment" -->
   - Human review <!-- .element: class="fragment" -->
 ---
-## Execute
+### Workflow - Execute
 - One task at a time <!-- .element: class="fragment" -->
 - Separate context when possible <!-- .element: class="fragment" -->
 - Optional improvement: Write tests first (TDD) OR write tests and code together <!-- .element: class="fragment" -->
 ---
-## Validation
+### Workflow - Validation
 - Best if it can be done by the model itself <!-- .element: class="fragment" -->
 - Reflection <!-- .element: class="fragment" -->
   - test runs, linters, type check, build result <!-- .element: class="fragment" -->
@@ -190,7 +190,7 @@ Notes:
 - Hooks - later <!-- .element: class="fragment" -->
 - AI double checks the implementation <!-- .element: class="fragment" -->
 ---
-## Code Review
+### Workflow - Code Review
 - Automatic review <!-- .element: class="fragment" -->
   - /prompt-collection:code-review   <!-- .element: class="fragment" -->
   - /review - only for Github <!-- .element: class="fragment" -->
@@ -198,16 +198,16 @@ Notes:
   - __Never trust AI generated code especially in production__ <!-- .element: class="fragment" -->
   - __Read and understand every line it produces__ <!-- .element: class="fragment" -->
 ---
-## Commit/rewind
+### Workflow - Commit/rewind
 - If good, commit after each task <!-- .element: class="fragment" -->
 - If not, ask to modify or /rewind to previous checkpoint <!-- .element: class="fragment" -->
 ---
-## Spec Driven Development Frameworks 
+### Workflow - Spec Driven Development Frameworks 
 - Requirement Gathering Workflow
     - In-house Tool
     - Beta
-- Github Spec Kit
-- Agent OS
+- [Github Spec Kit](https://github.com/github/spec-kit)
+- [Agent OS](https://github.com/buildermethods/agent-os)
                 </textarea>
             </section>
         </div>
